@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ContorlPanel from './views/ContorlPanel';
+import TodoApp from './TodoApp';
+import {Provider} from 'react-redux';
+import store from './store';
 
 ReactDOM.render(
-    <ContorlPanel />,
+    <Provider store={store}>
+        <TodoApp />
+    </Provider>,
     document.getElementById('root')
 )
