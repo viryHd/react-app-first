@@ -8,15 +8,15 @@ import { FilterTypes } from "../../constants";
 const TodoList = ({ todos, onToggleTodo, onRemoveTodo }) => {
   return (
     <ul className="todo-list">
-      {todos.map(item => {
+      {todos.map(item => (
         <TodoItem
           key={item.id}
           text={item.text}
           completed={item.completed}
           onToggle={() => onToggleTodo(item.id)}
           onRemove={() => onRemoveTodo(item.id)}
-        />;
-      })}
+        />
+      ))}
     </ul>
   );
 };
@@ -38,15 +38,18 @@ const selectVisibleTodos = (todos, filter) => {
   }
 };
 
-const mapStateToProps = (state)=>{
-    return {
-        todos: selectVisibleTodos(state.todos, state.filter)
-    };
-}
+const mapStateToProps = state => {
+  return {
+    todos: selectVisibleTodos(state.todos, state.filter)
+  };
+};
 
 const mapDispatchToProps = {
-    onToggleTodo: toggleTodo,
-    onRemoveTodo: removeTodo
-}
+  onToggleTodo: toggleTodo,
+  onRemoveTodo: removeTodo
+};
 
-export default connect(mapStateProps, mapDispatchToProps)(TodoList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);

@@ -4,23 +4,27 @@ import {connect} from 'react-redux';
 import {addTodo} from '../actions';
 
 class AddTodo extends Component {
-    onSubmit = ev =>{
-        ev.preventDefault();
-        const input = this.input;
-        if(!input.value.trim()) {
+    state = {value: ''}
+    onSubmit = e =>{
+        e.preventDefault();
+        if(!this.state.value.trim()) {
             return;
         }
-        this.props.onAdd(input.value);
-        input.value = '';
+        this.props.onAdd(this.state.value);
+        this.setState({
+            value: ''
+        });
     }
-    refInput = node=>{
-        this.input = node;
+    onInputChange = e=>{
+        this.setState({
+            value: e.target.value
+        });
     }
     render(){
         return (
             <div className="add-todo">
                 <form onSubmit={this.onSubmit}>
-                    <input className="new-todo" ref={this.refInput} />
+                    <input className="new-todo" onChange={this.onInputChange} value={this.state.value} />
                     <button className="add-btn" type="submit">添加</button>
                 </form>
             </div>

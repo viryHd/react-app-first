@@ -9,7 +9,7 @@ const TodoItem = ({onToggle, onRemove, completed, text}) => {
       textDecoration: completed ? 'line-through' : 'none'
     }}
     >
-      <input className="toggle" type="checkbox" {...checkedProp} readOnly onClick={onToggle} />
+      <input className="toggle" type="checkbox" {...checkProp} readOnly onClick={onToggle} />
       <label className="text">{text}</label>
       <button className="remove" onClick={onRemove}>X</button>
     </li>

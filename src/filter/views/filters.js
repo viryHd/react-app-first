@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from './link';
 import {FilterTypes} from '../../constants';
-import './style';
+import './style.css';
 
 const Filters= ()=>{
   return (
